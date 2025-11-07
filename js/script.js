@@ -32,14 +32,14 @@
 // Al click sul bottone leggere i numeri inseriti dall'utente
 // Controllare quanti dei umeri sono stati indovinati
 // Stampare il risultato del punteggio
-
+const form = document.querySelector("form");
 const randomNrElem = document.querySelector(".random-numbers")
 const randomNrArray = [];
 
-for(let i = 1; i < 5; i++){
+for (let i = 0; i < 5; i++) {
 
-    randomNr = Math.floor(Math.random() * 20) + 1;
-    randomNrArray.push(randomNr);
+  randomNr = Math.floor(Math.random() * 10) + 1;
+  randomNrArray.push(randomNr);
 }
 //console.log(randomNrArray);
 randomNrElem.innerHTML = randomNrArray.join("   ")
@@ -47,5 +47,24 @@ randomNrElem.innerHTML = randomNrArray.join("   ")
 const timeoutId = setTimeout(function () {
   randomNrElem.innerHTML = "";
 }, 3000);
-
 //clearTimeout(timeoutId);
+
+const nr1Elem = document.getElementById("nr1");
+console.log(nr1Elem);
+const nr2Elem = document.getElementById("nr2");
+const nr3Elem = document.getElementById("nr3");
+const nr4Elem = document.getElementById("nr4");
+const nr5Elem = document.getElementById("nr5");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nr1 = nr1Elem.value;
+console.log(nr1);
+  //create an array to push into all 5 user's inputs
+  //const inputNrArray = [];
+
+
+  //inputNrArray +=
+//includes method 
+});
