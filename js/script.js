@@ -42,10 +42,10 @@ for(let i = 1; i < 5; i++){
     randomNrArray.push(randomNr);
 }
 //console.log(randomNrArray);
-randomNrElem.textContent = randomNrArray.join("   ")
+randomNrElem.innerHTML = randomNrArray.join("   ")
 
 const timeoutId = setTimeout(function () {
-  randomNrElem.textContent = "";
-}, 30000);
+  randomNrElem.innerHTML = "";
+}, 3000);
 
 //clearTimeout(timeoutId);
