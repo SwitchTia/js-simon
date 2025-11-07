@@ -32,3 +32,20 @@
 // Al click sul bottone leggere i numeri inseriti dall'utente
 // Controllare quanti dei umeri sono stati indovinati
 // Stampare il risultato del punteggio
+
+const randomNrElem = document.querySelector(".random-numbers")
+const randomNrArray = [];
+
+for(let i = 1; i < 5; i++){
+
+    randomNr = Math.floor(Math.random() * 20) + 1;
+    randomNrArray.push(randomNr);
+}
+//console.log(randomNrArray);
+randomNrElem.textContent = randomNrArray.join("   ")
+
+const timeoutId = setTimeout(function () {
+  randomNrElem.textContent = "";
+}, 30000);
+
+//clearTimeout(timeoutId);
