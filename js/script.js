@@ -34,47 +34,90 @@
 // Stampare il risultato del punteggio
 
 
+const form = document.querySelector("form");
+const randomNrElem = document.getElementById("generate")
+const randomNrArray = [];
+
+for (let i = 0; i < 5; i++) {
+
+  randomNr = Math.floor(Math.random() * 10) + 1;
+  randomNrArray.push(randomNr);
+}
+//console.log(randomNrArray);
+randomNrElem.innerHTML = randomNrArray.join("   ")
+
+const timeoutId = setTimeout(function () {
+  randomNrElem.innerHTML = "";
+}, 3000);
+//clearTimeout(timeoutId);
+
+const nr1Elem = document.getElementById("nr1");
+console.log(nr1Elem);
+const nr2Elem = document.getElementById("nr2");
+const nr3Elem = document.getElementById("nr3");
+const nr4Elem = document.getElementById("nr4");
+const nr5Elem = document.getElementById("nr5");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nr1 = nr1Elem.value;
+console.log(nr1);
+  //create an array to push into all 5 user's inputs
+  //const inputNrArray = [];
+
+
+  //inputNrArray +=
+//includes method 
+});
 
 
 
 
+// const generateBtn = document.querySelector("#generate");
+// const randomResult = document.querySelector("#verifica");
 
+// //document.querySelectorAll()
+// const numInput1 = document.getElementById("num1")
+// const numInput2 = document.getElementById("num2")
+// const numInput3 = document.getElementById("num3")
+// const numInput4 = document.getElementById("num4")
+// const numInput5 = document.getElementById("num5")
+// const randomNumeri = document.querySelector("h1")
+// console.log(randomNumeri);
+// const timerElem = document.getElementById("timer")
+// const verificaBtn = document.querySelector("#verifica")
+// const risultatoOutput = document.querySelector("h2")
+// console.log(generaBtn)
 
+// // verificaBtn.disabled = true
+// // numInput1.disabled = true
+// // numInput2.disabled = true
+// // numInput3.disabled = true
+// // numInput4.disabled = true
+// // numInput5.disabled = true
+// let arrayRandom = [];
 
+// generateBtn.addEventListener("click", function () {
+//   //genera 5 numeri random
+//   for (let i = 0; i < 5; i++) {
+//     const randomNum = Math.floor(Math.random() * 9) + 1
+//     let currNum = randomNum
+//     if (arrayRandom.includes(currNum)) {
+//       i = i - 1
+//     }
+//     else {
+//       arrayRandom.push(randomNum)
+//     }
+//   }
 
-// const form = document.querySelector("form");
-// const randomNrElem = document.querySelector(".random-numbers")
-// const randomNrArray = [];
+//   console.log(arrayRandom)
+//   randomNumeri.innerHTML = arrayRandom.join(" ")
+//   //disable the button
+//   generaBtn.disabled = true;
 
-// for (let i = 0; i < 5; i++) {
-
-//   randomNr = Math.floor(Math.random() * 10) + 1;
-//   randomNrArray.push(randomNr);
-// }
-// //console.log(randomNrArray);
-// randomNrElem.innerHTML = randomNrArray.join("   ")
-
-// const timeoutId = setTimeout(function () {
-//   randomNrElem.innerHTML = "";
-// }, 3000);
-// //clearTimeout(timeoutId);
-
-// const nr1Elem = document.getElementById("nr1");
-// console.log(nr1Elem);
-// const nr2Elem = document.getElementById("nr2");
-// const nr3Elem = document.getElementById("nr3");
-// const nr4Elem = document.getElementById("nr4");
-// const nr5Elem = document.getElementById("nr5");
-
-// form.addEventListener("submit", function (event) {
-//   event.preventDefault();
-
-//   const nr1 = nr1Elem.value;
-// console.log(nr1);
-//   //create an array to push into all 5 user's inputs
-//   //const inputNrArray = [];
-
-
-//   //inputNrArray +=
-// //includes method 
-// });
+//   const timeoutId = setTimeout(function () {
+//     randomNumeri.innerHTML = "";
+//   }, 3000);
+//   //clearTimeout(timeoutId);
+// })
