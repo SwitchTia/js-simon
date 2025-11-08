@@ -10,35 +10,81 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 
-<body class="bg-light">
+
+<body class="bg-danger-subtle">
+
+    <main class="container mt-5 p-2 text-center">
+        <h1 id="randomNumbers" class="mb-4 text-center text-danger">Memory check</h1>
+
+        <div>
+            <button class="btn btn-success my-3" id="generate">Generate numbers</button>
+        </div>
+
+        <!-- Section numbers -->
+        <div class="p-3 border bg-success-subtle m-5">
+
+
+            <section class="p-2 text-center text-success mb-4" id="random-numbers">
+                <h1>- - - - -</h1>
+            </section>
+
+            <h5 class="text-danger-subtle">Insert the numers that you remember, no matter the sequence</h5>
+
+            <!-- Section input  -->
+            <section class="d-flex justify-content-center gap-3 p-4">
+                <input type="number" id="num1" class="col-2 text-center" style="font-size: 200%">
+                <input type="number" id="num2" class="col-2 text-center" style="font-size: 200%">
+                <input type="number" id="num3" class="col-2 text-center" style="font-size: 200%">
+                <input type="number" id="num4" class="col-2 text-center" style="font-size: 200%">
+                <input type="number" id="num5" class="col-2 text-center" style="font-size: 200%">
+            </section>
+
+        </div>
+        <!-- Result output -->
+        <section class="result text-danger ">
+            <h2>Let's see how many numbers you guessed:</h2>
+            <div>
+                <button class="btn btn-secondary my-3" id="checkInput">Check</button>
+            </div>
+            <h2 class="result-message"></h2>
+        </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+
+
+
+<!-- <body class="bg-light">
 
     <div class="container text-center py-5">
         <h1 id="randomNumbers" class="mb-4 text-center text-danger">Memory check</h1>
-        <form class="card p-4 bg-danger">
+        <div class="card p-4 bg-danger">
 
             <div class="random-numbers"></div>
-            
+
             <h5> <strong>Insert the numers that you remember, no matter the sequence</strong></h5>
 
             <div class="row justify-content-center">
 
-            </div>
-            <div class=" col-12 d-flex justify-content-center gap-2 mb-3 mt-5">
-                <input type="number" class="form-control" id="nr1">
-                <input type="number" class="form-control" id="nr2">
-                <input type="number" class="form-control" id="nr3">
-                <input type="number" class="form-control" id="nr4">
-                <input type="number" class="form-control" id="nr5">
-            </div>
+                <div class=" col-12 d-flex justify-content-center gap-2 mb-3 mt-5">
+                    <form action=""></form>
+                    <input type="number" class="form-control" id="nr1">
+                    <input type="number" class="form-control" id="nr2">
+                    <input type="number" class="form-control" id="nr3">
+                    <input type="number" class="form-control" id="nr4">
+                    <input type="number" class="form-control" id="nr5">
+                    </form>
+                </div>
 
-            <div>
-                <button class="btn btn-success mt-5" type="submit">Confirm</button>
+                <div>
+                    <button class="btn btn-success mt-5" type="submit">Confirm</button>
+                </div>
+                <p id="result" class="mt-3"></p>
             </div>
-            <p id="result" class="mt-3"></p>
-        </form>
     </div>
 
     <script src="js/script.js"></script>
-</body>
+</body> -->
 
 </html>
