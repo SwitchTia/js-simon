@@ -33,17 +33,16 @@
 // Controllare quanti dei umeri sono stati indovinati
 // Stampare il risultato del punteggio
 
-
+// Select elements
 const randomNrElem = document.getElementById("generate");
 const generateBtnElem = document.querySelector("#generateBtn");
-
 const inputForm = document.querySelector(".input-form");
-const inputNrList = document.querySelectorAll(".input-form input[type=number]");
-
+const inputNrList = document.querySelectorAll(".number-input");
 const resultMessageElem = document.querySelector(".result-message");
 
+let randomNrArray = []; // store generated numbers
 
-// function generate 5 ramndom numbers 1-10, no dublicates
+// Generate 5 random numbers (1–10, no duplicates)
 function generateRandomNumbers() {
   randomNrArray = [];
 
@@ -53,52 +52,54 @@ function generateRandomNumbers() {
       randomNrArray.push(randomNr);
     }
   }
-  console.log(`Generated numbers: ${randomNrArray}`);
+  console.log(`Generated numbers:${randomNrArray}`);
 }
 
-//visualize the numbers for the user
+// Show numbers for 3 seconds
 generateBtnElem.addEventListener("click", function (event) {
   event.preventDefault();
 
-  generateRandomNumbers();
-  randomNrElem.innerHTML = randomNrArray.join("   ");
-  //set a timer
-  setTimeout(function () {
-    randomNrElem.innerHTML = "";
+  generateRandomNumbers(); // create new numbers
+  randomNrElem.textContent = randomNrArray.join("   ");
+
+  setTimeout(() => {
+    randomNrElem.textContent = "";
   }, 3000);
+});
 
-})
+// Handle form submission
+inputForm.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-//on submit event of the click, storing the numbers into an array:
-const inputArray = [];
+  // Read user inputs
+  const inputArray = [];
+  for (let i = 0; i < inputNrList.length; i++) {
+    const value = parseInt(inputNrList[i].value);
+    if (!isNaN(value) && value >= 1 && value < 10) {
+      inputArray.push(value);
+    }
+  }
+  console.log(`User input:${inputArray}`);
 
+  // Compare arrays to find correct guesses
+  const resultNr = inputArray.filter(num => randomNrArray.includes(num));
+  const count = resultNr.length;
 
+  // Create the result message
+  let resultMessage = "";
+  if (count === 0) {
+    resultMessage = "No correct numbers. Try again!";
+  } else {
+    resultMessage = `Correct numbers (${count}): ${resultNr.join(", ")}`;
+  }
 
+  // Show result on the page
+  resultMessageElem.textContent = resultMessage;
 
+  // Reset input fields
+  inputForm.reset();
+});
 
-
-
-
-// inputForm.addEventListener("submit", function (event) {
-//   event.preventDefault();
-
-//   // Clearing array before adding new values:
-//   //inputArray.length = 0;
-
-//   for (let i = 0; i < inputNrList.length; i++) {
-//     let curNr = parseInt(inputNrList[i].value);
-//     //input controlls
-//     if (!isNaN(curNr)) {
-//       inputArray.push(curNr);
-//     }
-//   }
-
-//   console.log(`User input: ${inputArray}`);
-
-//   // Compare arrays to find correct guesses
-//   //const resultNr = inputArray.filter(num => randomNrArray.includes(num));
-//   //const count = resultNr.length;
-// });
 
 //cheching for identical numbers between randomNRArray and inputArray:
 // let count = 0;
@@ -116,26 +117,3 @@ const inputArray = [];
 // console.log(resultNr);
 
 
-
-
-
-// const generateBtn = document.querySelector("#generate");
-// const randomResult = document.querySelector("#verifica");
-
-// //document.querySelectorAll()
-// const randomNumeri = document.querySelector("h1")
-// console.log(randomNumeri);
-// const verificaBtn = document.querySelector("#verifica")
-// const risultatoOutput = document.querySelector("h2")
-// console.log(generaBtn)
-
-//   console.log(arrayRandom)
-//   randomNumeri.innerHTML = arrayRandom.join(" ")
-//   //disable the button
-//   generaBtn.disabled = true;
-
-//   const timeoutId = setTimeout(function () {
-//     randomNumeri.innerHTML = "";
-//   }, 3000);
-//   //clearTimeout(timeoutId);
-// })
