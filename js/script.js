@@ -34,32 +34,33 @@
 // Stampare il risultato del punteggio
 
 
-const form = document.querySelector("form");
 const randomNrElem = document.getElementById("generate");
 const generateBtnElem = document.querySelector("#generateBtn");
 
 const inputForm = document.querySelector(".input-form");
 const inputNrList = document.querySelectorAll(".input-form input[type=number]");
 
+const resultMessageElem = document.querySelector(".result-message");
 
-//generate 5 ramndom numbers:
-const randomNrArray = [];
 
-for (let i = 0; i < 5; i++) {
+// function generate 5 ramndom numbers 1-10, no dublicates
+function generateRandomNumbers() {
+  randomNrArray = [];
 
-  randomNr = Math.floor(Math.random() * 10) ;
-
-  while (randomNrArray.includes(randomNr)) {
-    randomNr = Math.floor(Math.random() * 10) ;
+  while (randomNrArray.length < 5) {
+    let randomNr = Math.floor(Math.random() * 10); // 1–9
+    if (!randomNrArray.includes(randomNr)) {
+      randomNrArray.push(randomNr);
+    }
   }
-  randomNrArray.push(randomNr);
+  console.log(`Generated numbers: ${randomNrArray}`);
 }
-console.log(randomNrArray);
 
 //visualize the numbers for the user
-generateBtnElem.addEventListener("click", function(event){
+generateBtnElem.addEventListener("click", function (event) {
   event.preventDefault();
 
+  generateRandomNumbers();
   randomNrElem.innerHTML = randomNrArray.join("   ");
   //set a timer
   setTimeout(function () {
@@ -71,35 +72,48 @@ generateBtnElem.addEventListener("click", function(event){
 //on submit event of the click, storing the numbers into an array:
 const inputArray = [];
 
-inputForm.addEventListener("submit", function(event) {
-  event.preventDefault();
 
-  // Clearing array before adding new values:
-    inputArray.length = 0;
 
-  for (let i = 0; i < inputNrList.length; i++) {
-    let curNr = parseInt(inputNrList[i].value);
-    if (!isNaN(curNr)) {
-        inputArray.push(curNr);
-      }
-  }
-  console.log(inputArray);
-});
+
+
+
+
+
+// inputForm.addEventListener("submit", function (event) {
+//   event.preventDefault();
+
+//   // Clearing array before adding new values:
+//   //inputArray.length = 0;
+
+//   for (let i = 0; i < inputNrList.length; i++) {
+//     let curNr = parseInt(inputNrList[i].value);
+//     //input controlls
+//     if (!isNaN(curNr)) {
+//       inputArray.push(curNr);
+//     }
+//   }
+
+//   console.log(`User input: ${inputArray}`);
+
+//   // Compare arrays to find correct guesses
+//   //const resultNr = inputArray.filter(num => randomNrArray.includes(num));
+//   //const count = resultNr.length;
+// });
 
 //cheching for identical numbers between randomNRArray and inputArray:
-let count = 0;
-let resultNr = [];
+// let count = 0;
+// let resultNr = [];
 
-for(let i = 0; i < inputArray.length; i++){
-  for(let j = 0; j < randomNrArray.length; j++){
-    if(inputArray[i].includes(randomNrArray[j])){
-      count ++;
-      resultNr.push(inputArray[i]);
-    }
-  }
-}
-console.log(count);
-console.log(resultNr);
+// for (let i = 0; i < inputArray.length; i++) {
+//   for (let j = 0; j < randomNrArray.length; j++) {
+//     if (inputArray.includes(randomNrArray[j])) {
+//       count++;
+//       resultNr.push(inputArray[i]);
+//     }
+//   }
+// }
+// console.log();
+// console.log(resultNr);
 
 
 
