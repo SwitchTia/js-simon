@@ -41,28 +41,6 @@ const inputNrList = document.querySelectorAll(".number-input");
 const resultMessageElem = document.querySelector(".result-message");
 
 
-const inputs = document.querySelectorAll('.number-input');
-
-inputs.forEach((input, index) => {
-  input.addEventListener('keydown', (event) => {
-    // Move right on ArrowRight
-    if (event.key === 'ArrowRight') {
-      if (index < inputs.length - 1) {
-        inputs[index + 1].focus();
-      }
-      event.preventDefault(); // prevent cursor moving inside input
-    }
-    // Move left on ArrowLeft
-    else if (event.key === 'ArrowLeft') {
-      if (index > 0) {
-        inputs[index - 1].focus();
-      }
-      event.preventDefault();
-    }
-  });
-});
-
-
 
 let randomNrArray = []; // store generated numbers
 
@@ -91,7 +69,32 @@ generateBtnElem.addEventListener("click", function (event) {
   }, 3000);
 });
 
-// Handle form submission
+
+// Arrow key navigation
+inputNrList.forEach((input, index) => {
+  // input.addEventListener("keydown", (event) => {
+  //   if (event.key === "ArrowRight") {
+  //     if (index < inputNrList.length - 1) {
+  //       inputNrList[index + 1].focus();
+  //     }
+  //     event.preventDefault();
+  //   } else if (event.key === "ArrowLeft") {
+  //     if (index > 0) {
+  //       inputNrList[index - 1].focus();
+  //     }
+  //     event.preventDefault();
+  //   }
+  // });
+
+
+  input.addEventListener("input", () => {
+    if (input.value.length >= 1 && index < inputNrList.length - 1) {
+      inputNrList[index + 1].focus();
+    }
+  });
+});
+
+// Form submission
 inputForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -103,11 +106,7 @@ inputForm.addEventListener("submit", function (event) {
       inputArray.push(value);
     }
   }
-  console.log(`User input:${inputArray}`);
-
-  // Compare arrays to find correct guesses
-  //const resultNr = inputArray.filter(num => randomNrArray.includes(num));
-  //const count = resultNr.length;
+  console.log(`User input: ${inputArray}`);
 
   // Compare arrays to find correct guesses using for loop and includes
   const resultNr = [];
@@ -122,13 +121,11 @@ inputForm.addEventListener("submit", function (event) {
   let resultMessage = "";
   if (count === 0) {
     resultMessage = "No correct numbers. Try again!";
-  }
-  else {
+  } else {
     resultMessage = `Correct numbers (${count}): ${resultNr.join(", ")}`;
-    if(count===5){
+    if (count === 5) {
       confetti({ particleCount: 5000, spread: 360 });
     }
-
   }
 
   // Show result on the page
@@ -136,6 +133,9 @@ inputForm.addEventListener("submit", function (event) {
 
   // Reset input fields
   inputForm.reset();
+
+  // Optionally, set focus back to the first input
+  inputNrList[0].focus();
 });
 
 
