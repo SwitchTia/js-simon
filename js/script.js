@@ -48,13 +48,10 @@ for (let i = 0; i < 5; i++) {
 
   randomNr = Math.floor(Math.random() * 10) ;
 
-  if (randomNrArray.includes(randomNr)) {
-    randomNr += 1; //??????needs correction!
+  while (randomNrArray.includes(randomNr)) {
+    randomNr = Math.floor(Math.random() * 10) ;
   }
-  else{
-    randomNrArray.push(randomNr);
-  }
-
+  randomNrArray.push(randomNr);
 }
 console.log(randomNrArray);
 //printing the random numbers for the user:
