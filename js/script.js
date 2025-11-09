@@ -54,6 +54,7 @@ for (let i = 0; i < 5; i++) {
   randomNrArray.push(randomNr);
 }
 console.log(randomNrArray);
+
 //printing the random numbers for the user:
 randomNrElem.innerHTML = randomNrArray.join("   ");
 
@@ -68,12 +69,18 @@ const inputArray = [];
 inputForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  // Clearing array before adding new values:
+    inputArray.length = 0;
+
   for (let i = 0; i < inputNrList.length; i++) {
-    let curNr = (parseInt(inputNrList[i].value));
-    inputArray.push(curNr);//????
+    let curNr = parseInt(inputNrList[i].value);
+    if (!isNaN(curNr)) {
+        inputArray.push(curNr);
+      }
   }
+  console.log(inputArray);
 });
-console.log(inputArray);
+
 
 
 
