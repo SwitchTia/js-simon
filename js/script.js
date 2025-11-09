@@ -36,6 +36,7 @@
 
 const form = document.querySelector("form");
 const randomNrElem = document.getElementById("generate");
+const generateBtnElem = document.querySelector("#generateBtn");
 
 const inputForm = document.querySelector(".input-form");
 const inputNrList = document.querySelectorAll(".input-form input[type=number]");
@@ -55,18 +56,22 @@ for (let i = 0; i < 5; i++) {
 }
 console.log(randomNrArray);
 
-//printing the random numbers for the user:
-randomNrElem.innerHTML = randomNrArray.join("   ");
+//visualize the numbers for the user
+generateBtnElem.addEventListener("click", function(event){
+  event.preventDefault();
 
-//setting a timer for visualisation:
-const timeoutId = setTimeout(function () {
-  randomNrElem.innerHTML = "";
-}, 3000);
+  randomNrElem.innerHTML = randomNrArray.join("   ");
+  //set a timer
+  setTimeout(function () {
+    randomNrElem.innerHTML = "";
+  }, 3000);
+
+})
 
 //on submit event of the click, storing the numbers into an array:
 const inputArray = [];
 
-inputForm.addEventListener("submit", function (event) {
+inputForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
   // Clearing array before adding new values:
@@ -81,6 +86,21 @@ inputForm.addEventListener("submit", function (event) {
   console.log(inputArray);
 });
 
+//cheching for identical numbers between randomNRArray and inputArray:
+let count = 0;
+let resultNr = [];
+
+for(let i = 0; i < inputArray.length; i++){
+  for(let j = 0; j < randomNrArray.length; j++){
+    if(inputArray[i].includes(randomNrArray[j])){
+      count ++;
+      resultNr.push(inputArray[i]);
+    }
+  }
+}
+console.log(count);
+console.log(resultNr);
+
 
 
 
@@ -91,7 +111,6 @@ inputForm.addEventListener("submit", function (event) {
 // //document.querySelectorAll()
 // const randomNumeri = document.querySelector("h1")
 // console.log(randomNumeri);
-// const timerElem = document.getElementById("timer")
 // const verificaBtn = document.querySelector("#verifica")
 // const risultatoOutput = document.querySelector("h2")
 // console.log(generaBtn)
