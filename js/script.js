@@ -40,6 +40,30 @@ const inputForm = document.querySelector(".input-form");
 const inputNrList = document.querySelectorAll(".number-input");
 const resultMessageElem = document.querySelector(".result-message");
 
+
+const inputs = document.querySelectorAll('.number-input');
+
+inputs.forEach((input, index) => {
+  input.addEventListener('keydown', (event) => {
+    // Move right on ArrowRight
+    if (event.key === 'ArrowRight') {
+      if (index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+      event.preventDefault(); // prevent cursor moving inside input
+    }
+    // Move left on ArrowLeft
+    else if (event.key === 'ArrowLeft') {
+      if (index > 0) {
+        inputs[index - 1].focus();
+      }
+      event.preventDefault();
+    }
+  });
+});
+
+
+
 let randomNrArray = []; // store generated numbers
 
 // Generate 5 random numbers (1–10, no duplicates)
@@ -75,22 +99,36 @@ inputForm.addEventListener("submit", function (event) {
   const inputArray = [];
   for (let i = 0; i < inputNrList.length; i++) {
     const value = parseInt(inputNrList[i].value);
-    if (!isNaN(value) && value >= 1 && value < 10) {
+    if (!isNaN(value) && value >= 0 && value < 10) {
       inputArray.push(value);
     }
   }
   console.log(`User input:${inputArray}`);
 
   // Compare arrays to find correct guesses
-  const resultNr = inputArray.filter(num => randomNrArray.includes(num));
+  //const resultNr = inputArray.filter(num => randomNrArray.includes(num));
+  //const count = resultNr.length;
+
+  // Compare arrays to find correct guesses using for loop and includes
+  const resultNr = [];
+  for (let i = 0; i < inputArray.length; i++) {
+    if (randomNrArray.includes(inputArray[i])) {
+      resultNr.push(inputArray[i]);
+    }
+  }
   const count = resultNr.length;
 
   // Create the result message
   let resultMessage = "";
   if (count === 0) {
     resultMessage = "No correct numbers. Try again!";
-  } else {
+  }
+  else {
     resultMessage = `Correct numbers (${count}): ${resultNr.join(", ")}`;
+    if(count===5){
+      confetti({ particleCount: 5000, spread: 360 });
+    }
+
   }
 
   // Show result on the page
