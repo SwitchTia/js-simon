@@ -14,24 +14,19 @@
 <body class="bg-danger-subtle">
 
     <main class="container mt-5 p-2 text-center">
-        <h1 id="randomNumbers" class="mb-4 text-center text-danger">Memory check</h1>
-
+        <h1 class="mb-4 text-center text-danger">Memory check</h1>
+        <h1 id="generate" class="my-3 text-success"></h1>
         <div>
-            <button class="btn btn-success my-3" id="generate">Generate numbers</button>
+            <button class="btn btn-success my-3" id="generateBtn">Generate numbers</button>
         </div>
 
         <!-- Section numbers -->
         <div class="p-3 border bg-success-subtle m-5">
 
-
-            <section class="p-2 text-center text-success mb-4" id="random-numbers">
-                <h1>- - - - -</h1>
-            </section>
-
             <h5 class="text-danger-subtle">Insert the numers that you remember, no matter the sequence</h5>
 
             <!-- Form input  -->
-            <form action="" class="guess-form"></form>
+            <form action="" class="input-form">
             <div class="d-flex justify-content-center gap-3 p-4">
                 <input type="number" id="nr1" class="col-2 text-center" style="font-size: 200%">
                 <input type="number" id="nr2" class="col-2 text-center" style="font-size: 200%">
@@ -39,15 +34,15 @@
                 <input type="number" id="nr4" class="col-2 text-center" style="font-size: 200%">
                 <input type="number" id="nr5" class="col-2 text-center" style="font-size: 200%">
             </div>
+            <div>
+                <button id="submitInput" class="btn btn-success mt-5" type="submit">Confirm</button>
+            </div>
             </form>
-
         </div>
         <!-- Result output -->
         <section class="result text-danger ">
             <h2>Let's see how many numbers you guessed:</h2>
-            <div>
-                <button class="btn btn-secondary my-3" id="checkInput">Check</button>
-            </div>
+            
             <h2 class="result-message"></h2>
         </section>
     </main>

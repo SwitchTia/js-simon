@@ -35,41 +35,48 @@
 
 
 const form = document.querySelector("form");
-const randomNrElem = document.getElementById("generate")
+const randomNrElem = document.getElementById("generate");
+
+const inputForm = document.querySelector(".input-form");
+const inputNrList = document.querySelectorAll(".input-form input[type=number]");
+
+
+//generate 5 ramndom numbers:
 const randomNrArray = [];
 
 for (let i = 0; i < 5; i++) {
 
-  randomNr = Math.floor(Math.random() * 10) + 1;
-  randomNrArray.push(randomNr);
-}
-//console.log(randomNrArray);
-randomNrElem.innerHTML = randomNrArray.join("   ")
+  randomNr = Math.floor(Math.random() * 10) ;
 
+  if (randomNrArray.includes(randomNr)) {
+    randomNr += 1; //??????needs correction!
+  }
+  else{
+    randomNrArray.push(randomNr);
+  }
+
+}
+console.log(randomNrArray);
+//printing the random numbers for the user:
+randomNrElem.innerHTML = randomNrArray.join("   ");
+
+//setting a timer for visualisation:
 const timeoutId = setTimeout(function () {
   randomNrElem.innerHTML = "";
 }, 3000);
-//clearTimeout(timeoutId);
 
-const nr1Elem = document.getElementById("nr1");
-console.log(nr1Elem);
-const nr2Elem = document.getElementById("nr2");
-const nr3Elem = document.getElementById("nr3");
-const nr4Elem = document.getElementById("nr4");
-const nr5Elem = document.getElementById("nr5");
+//on submit event of the click, storing the numbers into an array:
+const inputArray = [];
 
-form.addEventListener("submit", function (event) {
+inputForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const nr1 = nr1Elem.value;
-console.log(nr1);
-  //create an array to push into all 5 user's inputs
-  //const inputNrArray = [];
-
-
-  //inputNrArray +=
-//includes method 
+  for (let i = 0; i < inputNrList.length; i++) {
+    let curNr = (parseInt(inputNrList[i].value));
+    inputArray.push(curNr);//????
+  }
 });
+console.log(inputArray);
 
 
 
@@ -78,38 +85,12 @@ console.log(nr1);
 // const randomResult = document.querySelector("#verifica");
 
 // //document.querySelectorAll()
-// const numInput1 = document.getElementById("num1")
-// const numInput2 = document.getElementById("num2")
-// const numInput3 = document.getElementById("num3")
-// const numInput4 = document.getElementById("num4")
-// const numInput5 = document.getElementById("num5")
 // const randomNumeri = document.querySelector("h1")
 // console.log(randomNumeri);
 // const timerElem = document.getElementById("timer")
 // const verificaBtn = document.querySelector("#verifica")
 // const risultatoOutput = document.querySelector("h2")
 // console.log(generaBtn)
-
-// // verificaBtn.disabled = true
-// // numInput1.disabled = true
-// // numInput2.disabled = true
-// // numInput3.disabled = true
-// // numInput4.disabled = true
-// // numInput5.disabled = true
-// let arrayRandom = [];
-
-// generateBtn.addEventListener("click", function () {
-//   //genera 5 numeri random
-//   for (let i = 0; i < 5; i++) {
-//     const randomNum = Math.floor(Math.random() * 9) + 1
-//     let currNum = randomNum
-//     if (arrayRandom.includes(currNum)) {
-//       i = i - 1
-//     }
-//     else {
-//       arrayRandom.push(randomNum)
-//     }
-//   }
 
 //   console.log(arrayRandom)
 //   randomNumeri.innerHTML = arrayRandom.join(" ")
